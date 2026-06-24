@@ -1,0 +1,10 @@
+﻿Mô hình,Ràng buộc,Vế trái,Ngưỡng,Slack,Đạt?
+SP,First-stage budget Σx_j ≤ 65.000,65000.0,65000.0,0.0,True
+SP,Second-stage budget s1: Σy_sj ≤ 15.000,15000.0,15000.0,0.0,True
+SP,"Năng lực AI s1: y_AI_s ≤ 0,5*x_H",-0.0,0.0,0.0,True
+SP,Second-stage budget s2: Σy_sj ≤ 15.000,15000.0,15000.0,0.0,True
+SP,"Năng lực AI s2: y_AI_s ≤ 0,5*x_H",-0.0,0.0,0.0,True
+SP,Second-stage budget s3: Σy_sj ≤ 15.000,15000.0,15000.0,0.0,True
+SP,"Năng lực AI s3: y_AI_s ≤ 0,5*x_H",0.0,0.0,0.0,True
+SP,Second-stage budget s4: Σy_sj ≤ 15.000,15000.0,15000.0,0.0,True
+SP,"Năng lực AI s4: y_AI_s ≤ 0,5*x_H",0.0,0.0,0.0,True

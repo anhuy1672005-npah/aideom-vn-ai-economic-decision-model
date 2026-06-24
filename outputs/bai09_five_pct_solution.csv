@@ -1,0 +1,9 @@
+﻿sector_id,Ngành,x_AI (tỷ VND),x_H đào tạo lại (tỷ VND),"x_D (tỷ VND, mặc định 0)",Tổng đầu tư ngành,NewJob_AI,NewJob_D,NewJob_total,UpgradeJob,DisplacedJob,RetrainingCapacity,NetJob,NetJob >= 0?,Đào tạo đủ cho displaced?
+1,Nông-Lâm-Thủy sản,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,True,True
+2,CN chế biến chế tạo,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,True,True
+3,Xây dựng,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,True,True
+4,Bán buôn-bán lẻ,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,True,True
+5,Tài chính-Ngân hàng,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,True,True
+6,Logistics-Vận tải,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,True,True
+7,CNTT-Truyền thông,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,True,True
+8,Giáo dục-Đào tạo,0.0,30000.0,0.0,30000.0,0.0,0.0,0.0,1650000.0,0.0,1860000.0,1650000.0,True,True

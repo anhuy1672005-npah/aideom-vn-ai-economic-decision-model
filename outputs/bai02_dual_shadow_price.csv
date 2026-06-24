@@ -1,0 +1,7 @@
+﻿Ràng buộc,Shadow_price_PuLP,Slack_truc_tiep,Ghi chú
+Ngân sách tổng,1.35,0.0,"Nếu nới ngân sách thêm 1 nghìn tỷ VND, Z* tăng xấp xỉ bằng shadow price này."
+Sàn hạ tầng số,-0.5,0.0,"Nếu nâng yêu cầu tối thiểu thêm 1 nghìn tỷ VND, Z* thay đổi theo shadow price này. Giá trị âm nghĩa là làm giảm mục tiêu."
+Sàn AI và dữ liệu,-0.15,0.0,"Nếu nâng yêu cầu tối thiểu thêm 1 nghìn tỷ VND, Z* thay đổi theo shadow price này. Giá trị âm nghĩa là làm giảm mục tiêu."
+Sàn nhân lực số,-0.4,0.0,"Nếu nâng yêu cầu tối thiểu thêm 1 nghìn tỷ VND, Z* thay đổi theo shadow price này. Giá trị âm nghĩa là làm giảm mục tiêu."
+Sàn R&D công nghệ,-0.0,30.0,Ràng buộc không chặt nên shadow price bằng 0 hoặc xấp xỉ 0.
+Tỷ trọng công nghệ chiến lược,-0.0,20.0,Ràng buộc không chặt nên shadow price bằng 0 hoặc xấp xỉ 0.

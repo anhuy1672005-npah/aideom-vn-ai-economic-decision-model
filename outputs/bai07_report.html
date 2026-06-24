@@ -1,0 +1,128 @@
+
+    <html><head><meta charset='utf-8'><title>Bài 7 - Pareto NSGA-II</title>
+    <style>body{font-family:Arial, sans-serif; line-height:1.6; margin:32px;} table{border-collapse:collapse; width:100%; margin:12px 0;} th,td{border:1px solid #ddd; padding:8px;} th{background:#f2f2f2;}</style>
+    </head><body>
+    <h1>Bài 7 — Tối ưu đa mục tiêu Pareto với NSGA-II</h1>
+    <p><b>lambda dùng khi chạy:</b> 0.6800</p>
+    <div style="background:#fff7ed;border-left:5px solid #f59e0b;padding:12px;margin:12px 0;">
+    <b>Ghi chú nộp bài:</b> Bài 7 kế thừa ràng buộc C1-C5 từ Bài 4. Với tham số gốc lambda=0.70, hệ C3 và C5 không khả thi. Vì vậy báo cáo cần nêu rõ mô hình gốc được kiểm tra infeasible, sau đó dùng lambda hiệu chỉnh khả thi để sinh tập Pareto bằng NSGA-II.
+    </div>
+    <h2>Nghiệm thỏa hiệp TOPSIS</h2>
+    <ul>
+      <li>GDP gain: 46,350.92</li>
+      <li>Inequality MAD: 0.185950</li>
+      <li>Emission: 1,227.50</li>
+      <li>Net security risk: -4,500.95</li>
+      <li>TOPSIS score: 0.874069</li>
+    </ul>
+    <h2>Nghiệm tăng trưởng cao nhất</h2>
+    <ul>
+      <li>GDP gain: 49,282.11</li>
+      <li>Inequality MAD: 0.252755</li>
+      <li>Emission: 5,071.27</li>
+      <li>Net security risk: -296.93</li>
+    </ul>
+    <h2>Chi phí cơ hội</h2>
+    <table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Chỉ tiêu</th>
+      <th>Nghiệm thỏa hiệp</th>
+      <th>Nghiệm tăng trưởng cao nhất</th>
+      <th>% hi sinh / tăng thêm so với thỏa hiệp</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Bất bình đẳng vùng - Inequality_MAD</td>
+      <td>0.185950</td>
+      <td>0.252755</td>
+      <td>35.925962</td>
+    </tr>
+    <tr>
+      <td>Phát thải - Emission</td>
+      <td>1227.499096</td>
+      <td>5071.268808</td>
+      <td>313.138293</td>
+    </tr>
+    <tr>
+      <td>Rủi ro an ninh dữ liệu ròng</td>
+      <td>-4500.946244</td>
+      <td>-296.933504</td>
+      <td>93.402865</td>
+    </tr>
+  </tbody>
+</table>
+    <h2>Phân bổ nghiệm thỏa hiệp</h2>
+    <table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Hạ tầng số</th>
+      <th>Chuyển đổi số DN</th>
+      <th>Năng lực AI</th>
+      <th>Nhân lực số</th>
+      <th>Tổng vùng</th>
+    </tr>
+    <tr>
+      <th>Vùng</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Trung du miền núi phía Bắc</th>
+      <td>3.122773</td>
+      <td>9142.784708</td>
+      <td>0.451351</td>
+      <td>75.097878</td>
+      <td>9221.456710</td>
+    </tr>
+    <tr>
+      <th>Đồng bằng sông Hồng</th>
+      <td>295.382416</td>
+      <td>1830.996702</td>
+      <td>10.121170</td>
+      <td>3779.372311</td>
+      <td>5915.872600</td>
+    </tr>
+    <tr>
+      <th>Bắc Trung Bộ + DH Trung Bộ</th>
+      <td>290.687139</td>
+      <td>1390.157174</td>
+      <td>1784.388960</td>
+      <td>3399.312976</td>
+      <td>6864.546250</td>
+    </tr>
+    <tr>
+      <th>Tây Nguyên</th>
+      <td>11.197068</td>
+      <td>11892.635708</td>
+      <td>0.094898</td>
+      <td>52.715086</td>
+      <td>11956.642760</td>
+    </tr>
+    <tr>
+      <th>Đông Nam Bộ</th>
+      <td>0.860607</td>
+      <td>0.058073</td>
+      <td>32.776635</td>
+      <td>7655.310182</td>
+      <td>7689.005496</td>
+    </tr>
+    <tr>
+      <th>Đồng bằng sông Cửu Long</th>
+      <td>70.653214</td>
+      <td>4618.129037</td>
+      <td>27.941375</td>
+      <td>3313.619923</td>
+      <td>8030.343549</td>
+    </tr>
+  </tbody>
+</table>
+    </body></html>
+    

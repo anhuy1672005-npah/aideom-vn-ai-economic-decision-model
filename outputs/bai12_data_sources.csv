@@ -1,0 +1,5 @@
+﻿Nguồn dữ liệu,Phạm vi,Chỉ tiêu chính,Module sử dụng,Ghi chú
+vietnam_macro_2020_2025.csv,Vĩ mô 2020-2025,"GDP, K, L, D, AI, H",M1 dự báo Cobb-Douglas,Đọc từ data/ nếu có; nếu thiếu cột thì bổ sung theo bảng đề
+vietnam_regions_2024.csv,6 vùng KT-XH,"GRDP/người, FDI, Digital Index, AI readiness, lao động đào tạo, R&D, Internet, Gini",M2 TOPSIS/Entropy và M3 phân bổ vùng,Đọc từ data/ nếu có; fallback bảng đề
+vietnam_sectors_2024.csv,10 ngành 2024,"Tăng trưởng, năng suất, lao động, xuất khẩu, AI readiness, automation risk",M4 lao động AI,Đọc từ data/ nếu có; fallback bảng đề
+Tham số mô phỏng trong code,Chính sách,"Hệ số risk/welfare, eta_D/AI/H, ngân sách năm",M3-M5 và dashboard,Giả định học tập; cần nêu rõ trong báo cáo

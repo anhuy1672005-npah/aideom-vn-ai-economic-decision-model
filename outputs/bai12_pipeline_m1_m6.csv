@@ -1,0 +1,7 @@
+﻿Module,Chức năng,Input,Output,Phương pháp
+M1,Dự báo kinh tế,macro_df,"GDP_forecast, D, AI, H, welfare_score",Cobb-Douglas mở rộng + mô phỏng kịch bản
+M2,Sẵn sàng số vùng,regions_df,"TOPSIS_score, rank, entropy_weights",TOPSIS + Entropy
+M3,Phân bổ ngân sách,regions_df + allocation K/D/AI/H,region_item_allocation,Quy tắc phân bổ theo readiness và kịch bản
+M4,Lao động AI,sectors_df + allocation,"NewJob, DisplacedJob, RetrainingCapacity, NetJob",Logic mở rộng từ Bài 9
+M5,Rủi ro,macro_scenarios,"Cyber, môi trường, thất nghiệp, phụ thuộc công nghệ",Risk scoring 0-100
+M6,Dashboard,M1-M5 outputs,"8 tab, KPI, biểu đồ, file tải",Streamlit

@@ -1,0 +1,9 @@
+﻿File output,Ý nghĩa
+bai09_parameters.csv,Bảng tham số 8 ngành theo đề
+bai09_base_solution.csv,Nghiệm tối ưu cơ sở; có thể là nghiệm góc x_AI=0
+bai09_threshold_sector2.csv,Ngưỡng đào tạo ngành 2
+bai09_vulnerable_flow.csv,"Mô phỏng nhóm dễ bị tổn thương ngành 1, 3, 4"
+bai09_five_pct_solution.csv,Nghiệm với ràng buộc không ngành nào mất quá 5% lao động
+bai09_policy_extended_solution.csv,Kịch bản mở rộng có AI tối thiểu và trần ngành
+bai09_policy_extended_summary.csv,Tóm tắt kịch bản mở rộng
+bai09_report.html,Báo cáo HTML

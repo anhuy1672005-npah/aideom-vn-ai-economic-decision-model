@@ -1,0 +1,7 @@
+﻿Chỉ tiêu,Giá trị,Diễn giải
+lambda gốc trong đề,0.7,Đề yêu cầu λ = 0.70
+Digital Index lớn nhất ban đầu,82.0,"Đông Nam Bộ = 82, làm mốc M tối thiểu"
+Ngưỡng Tây Nguyên phải đạt,57.4,0.70 × 82 = 57.4
+Đầu tư D cần cho Tây Nguyên,12700.0,(57.4 - 32) / 0.002 = 12.700 tỷ
+Trần ngân sách mỗi vùng,12000.0,C3 chỉ cho tối đa 12.000 tỷ/vùng
+lambda tối đa khả thi sơ bộ,0.6829,"Khoảng 0.6829, nên λ=0.70 không khả thi"

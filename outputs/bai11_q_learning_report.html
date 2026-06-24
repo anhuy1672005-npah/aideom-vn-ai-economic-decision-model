@@ -1,0 +1,1312 @@
+
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Bài 11 - Q-learning chính sách kinh tế</title>
+        <style>
+            body {font-family: Arial, sans-serif; line-height: 1.5; margin: 30px;}
+            h1, h2, h3 {color: #1f3b66;}
+            table {border-collapse: collapse; width: 100%; margin-bottom: 25px; font-size: 13px;}
+            th {background-color: #1f3b66; color: white; padding: 6px; border: 1px solid #ccc;}
+            td {padding: 6px; border: 1px solid #ccc; text-align: left;}
+            .box {background: #f2f6ff; padding: 15px; border-left: 5px solid #1f3b66; margin-bottom: 20px;}
+        </style>
+    </head>
+    <body>
+        <h1>BÀI 11 - HỌC TĂNG CƯỜNG Q-LEARNING CHO CHÍNH SÁCH KINH TẾ THÍCH NGHI</h1>
+        <div class="box">
+            <p><b>Trạng thái:</b> 4 yếu tố, mỗi yếu tố 3 mức, tổng 3^4 = 81 trạng thái.</p>
+            <p><b>Hành động:</b> 5 chính sách phân bổ ngân sách a0-a4.</p>
+            <p><b>Thuật toán:</b> tabular Q-learning với epsilon-greedy.</p>
+        </div>
+        <h2>1. Tập hành động</h2>
+        <table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Mã hành động</th>
+      <th>Tên hành động</th>
+      <th>K - Vốn vật chất</th>
+      <th>D - Số hóa</th>
+      <th>AI - Trí tuệ nhân tạo</th>
+      <th>H - Nhân lực</th>
+      <th>Đặc điểm phân bổ</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>a0</td>
+      <td>Truyền thống</td>
+      <td>0.70</td>
+      <td>0.10</td>
+      <td>0.10</td>
+      <td>0.10</td>
+      <td>70% K + 10% D + 10% AI + 10% H</td>
+    </tr>
+    <tr>
+      <td>a1</td>
+      <td>Cân bằng</td>
+      <td>0.40</td>
+      <td>0.25</td>
+      <td>0.15</td>
+      <td>0.20</td>
+      <td>40% K + 25% D + 15% AI + 20% H</td>
+    </tr>
+    <tr>
+      <td>a2</td>
+      <td>Số hóa nhanh</td>
+      <td>0.25</td>
+      <td>0.45</td>
+      <td>0.15</td>
+      <td>0.15</td>
+      <td>25% K + 45% D + 15% AI + 15% H</td>
+    </tr>
+    <tr>
+      <td>a3</td>
+      <td>AI dẫn dắt</td>
+      <td>0.20</td>
+      <td>0.20</td>
+      <td>0.45</td>
+      <td>0.15</td>
+      <td>20% K + 20% D + 45% AI + 15% H</td>
+    </tr>
+    <tr>
+      <td>a4</td>
+      <td>Bao trùm</td>
+      <td>0.30</td>
+      <td>0.20</td>
+      <td>0.10</td>
+      <td>0.40</td>
+      <td>30% K + 20% D + 10% AI + 40% H</td>
+    </tr>
+  </tbody>
+</table>
+        <h2>2. Learning curve - 10 episode cuối</h2>
+        <table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>episode</th>
+      <th>epsilon</th>
+      <th>total_reward</th>
+      <th>steps</th>
+      <th>rolling_reward_100</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>9981</td>
+      <td>0.05</td>
+      <td>3.117714</td>
+      <td>10</td>
+      <td>4.051325</td>
+    </tr>
+    <tr>
+      <td>9982</td>
+      <td>0.05</td>
+      <td>7.610640</td>
+      <td>10</td>
+      <td>4.068832</td>
+    </tr>
+    <tr>
+      <td>9983</td>
+      <td>0.05</td>
+      <td>0.062148</td>
+      <td>10</td>
+      <td>4.067708</td>
+    </tr>
+    <tr>
+      <td>9984</td>
+      <td>0.05</td>
+      <td>-0.241469</td>
+      <td>10</td>
+      <td>4.054168</td>
+    </tr>
+    <tr>
+      <td>9985</td>
+      <td>0.05</td>
+      <td>4.103216</td>
+      <td>10</td>
+      <td>4.070082</td>
+    </tr>
+    <tr>
+      <td>9986</td>
+      <td>0.05</td>
+      <td>5.268471</td>
+      <td>10</td>
+      <td>4.053972</td>
+    </tr>
+    <tr>
+      <td>9987</td>
+      <td>0.05</td>
+      <td>5.242600</td>
+      <td>10</td>
+      <td>4.077168</td>
+    </tr>
+    <tr>
+      <td>9988</td>
+      <td>0.05</td>
+      <td>0.156689</td>
+      <td>10</td>
+      <td>4.053501</td>
+    </tr>
+    <tr>
+      <td>9989</td>
+      <td>0.05</td>
+      <td>4.988492</td>
+      <td>10</td>
+      <td>4.087265</td>
+    </tr>
+    <tr>
+      <td>9990</td>
+      <td>0.05</td>
+      <td>5.979503</td>
+      <td>10</td>
+      <td>4.101756</td>
+    </tr>
+    <tr>
+      <td>9991</td>
+      <td>0.05</td>
+      <td>2.181873</td>
+      <td>10</td>
+      <td>4.105629</td>
+    </tr>
+    <tr>
+      <td>9992</td>
+      <td>0.05</td>
+      <td>5.461377</td>
+      <td>10</td>
+      <td>4.100812</td>
+    </tr>
+    <tr>
+      <td>9993</td>
+      <td>0.05</td>
+      <td>3.852143</td>
+      <td>10</td>
+      <td>4.118925</td>
+    </tr>
+    <tr>
+      <td>9994</td>
+      <td>0.05</td>
+      <td>6.140357</td>
+      <td>10</td>
+      <td>4.137823</td>
+    </tr>
+    <tr>
+      <td>9995</td>
+      <td>0.05</td>
+      <td>1.765565</td>
+      <td>10</td>
+      <td>4.093581</td>
+    </tr>
+    <tr>
+      <td>9996</td>
+      <td>0.05</td>
+      <td>0.901324</td>
+      <td>10</td>
+      <td>4.101028</td>
+    </tr>
+    <tr>
+      <td>9997</td>
+      <td>0.05</td>
+      <td>4.530435</td>
+      <td>10</td>
+      <td>4.133335</td>
+    </tr>
+    <tr>
+      <td>9998</td>
+      <td>0.05</td>
+      <td>5.712956</td>
+      <td>10</td>
+      <td>4.177467</td>
+    </tr>
+    <tr>
+      <td>9999</td>
+      <td>0.05</td>
+      <td>0.449089</td>
+      <td>10</td>
+      <td>4.178902</td>
+    </tr>
+    <tr>
+      <td>10000</td>
+      <td>0.05</td>
+      <td>4.988492</td>
+      <td>10</td>
+      <td>4.183848</td>
+    </tr>
+  </tbody>
+</table>
+        <h2>3. Chính sách tại VN 2026 và 4 trạng thái giả định</h2>
+        <table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Trường hợp</th>
+      <th>Trạng thái</th>
+      <th>Hành động π*(s) đầu tiên</th>
+      <th>Phân bổ</th>
+      <th>Reward 10 năm nếu đi theo π*</th>
+      <th>D cuối kỳ</th>
+      <th>AI cuối kỳ</th>
+      <th>H cuối kỳ</th>
+      <th>U cuối kỳ</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Việt Nam 2026 thực tế</td>
+      <td>GDP growth: Trung bình | Digital index: Trung bình | AI capacity: Thấp | Unemployment risk: Trung bình</td>
+      <td>a4 - Bao trùm</td>
+      <td>30% K + 20% D + 10% AI + 40% H</td>
+      <td>6.879485</td>
+      <td>40.3</td>
+      <td>136.0</td>
+      <td>46.255047</td>
+      <td>0.111254</td>
+    </tr>
+    <tr>
+      <td>GDP thấp, D thấp, AI thấp, U cao</td>
+      <td>GDP growth: Thấp | Digital index: Thấp | AI capacity: Thấp | Unemployment risk: Cao</td>
+      <td>a4 - Bao trùm</td>
+      <td>30% K + 20% D + 10% AI + 40% H</td>
+      <td>7.054392</td>
+      <td>32.0</td>
+      <td>153.5</td>
+      <td>45.101616</td>
+      <td>0.385928</td>
+    </tr>
+    <tr>
+      <td>GDP cao, D cao, AI cao, U thấp</td>
+      <td>GDP growth: Cao | Digital index: Cao | AI capacity: Cao | Unemployment risk: Thấp</td>
+      <td>a4 - Bao trùm</td>
+      <td>30% K + 20% D + 10% AI + 40% H</td>
+      <td>-0.241469</td>
+      <td>60.0</td>
+      <td>200.0</td>
+      <td>46.255047</td>
+      <td>0.050000</td>
+    </tr>
+    <tr>
+      <td>GDP trung bình, D thấp, AI thấp, U trung bình</td>
+      <td>GDP growth: Trung bình | Digital index: Thấp | AI capacity: Thấp | Unemployment risk: Trung bình</td>
+      <td>a4 - Bao trùm</td>
+      <td>30% K + 20% D + 10% AI + 40% H</td>
+      <td>8.631994</td>
+      <td>32.0</td>
+      <td>136.0</td>
+      <td>46.255047</td>
+      <td>0.087466</td>
+    </tr>
+    <tr>
+      <td>GDP trung bình, D trung bình, AI cao, U cao</td>
+      <td>GDP growth: Trung bình | Digital index: Trung bình | AI capacity: Cao | Unemployment risk: Cao</td>
+      <td>a4 - Bao trùm</td>
+      <td>30% K + 20% D + 10% AI + 40% H</td>
+      <td>5.461377</td>
+      <td>40.3</td>
+      <td>200.0</td>
+      <td>46.255047</td>
+      <td>0.372223</td>
+    </tr>
+  </tbody>
+</table>
+        <h2>4. So sánh với rule-based policies</h2>
+        <table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Chính sách</th>
+      <th>Reward tích lũy</th>
+      <th>Reward bình quân/năm</th>
+      <th>GDP growth bình quân (%)</th>
+      <th>D cuối kỳ</th>
+      <th>AI cuối kỳ</th>
+      <th>H cuối kỳ</th>
+      <th>Rủi ro thất nghiệp cuối kỳ</th>
+      <th>Hành động đầu tiên</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Q-learning π*</td>
+      <td>6.879485</td>
+      <td>0.687949</td>
+      <td>0.654092</td>
+      <td>40.30</td>
+      <td>136.000</td>
+      <td>46.255047</td>
+      <td>0.111254</td>
+      <td>a4 - Bao trùm</td>
+    </tr>
+    <tr>
+      <td>Rule a1 - Cân bằng</td>
+      <td>-1.641172</td>
+      <td>-0.164117</td>
+      <td>0.886976</td>
+      <td>45.30</td>
+      <td>161.000</td>
+      <td>36.693255</td>
+      <td>0.353244</td>
+      <td>a1 - Cân bằng</td>
+    </tr>
+    <tr>
+      <td>Random trung bình 100 lần</td>
+      <td>-2.516612</td>
+      <td>-0.568521</td>
+      <td>0.661140</td>
+      <td>45.06</td>
+      <td>178.275</td>
+      <td>36.874762</td>
+      <td>0.377687</td>
+      <td>Ngẫu nhiên</td>
+    </tr>
+    <tr>
+      <td>Rule a3 - AI dẫn dắt</td>
+      <td>-13.042413</td>
+      <td>-1.304241</td>
+      <td>1.039980</td>
+      <td>40.30</td>
+      <td>311.000</td>
+      <td>34.302807</td>
+      <td>0.650970</td>
+      <td>a3 - AI dẫn dắt</td>
+    </tr>
+  </tbody>
+</table>
+        <h2>5. Chính sách π*(s) cho toàn bộ 81 trạng thái</h2>
+        <table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>GDP growth</th>
+      <th>Digital index</th>
+      <th>AI capacity</th>
+      <th>Unemployment risk</th>
+      <th>state_code</th>
+      <th>action_code</th>
+      <th>Chính sách π*(s)</th>
+      <th>Phân bổ</th>
+      <th>Q_max</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Thấp</td>
+      <td>Thấp</td>
+      <td>Thấp</td>
+      <td>Thấp</td>
+      <td>0</td>
+      <td>a4</td>
+      <td>a4 - Bao trùm</td>
+      <td>30% K + 20% D + 10% AI + 40% H</td>
+      <td>5.725017</td>
+    </tr>
+    <tr>
+      <td>Thấp</td>
+      <td>Thấp</td>
+      <td>Thấp</td>
+      <td>Trung bình</td>
+      <td>1</td>
+      <td>a4</td>
+      <td>a4 - Bao trùm</td>
+      <td>30% K + 20% D + 10% AI + 40% H</td>
+      <td>6.818993</td>
+    </tr>
+    <tr>
+      <td>Thấp</td>
+      <td>Thấp</td>
+      <td>Thấp</td>
+      <td>Cao</td>
+      <td>2</td>
+      <td>a4</td>
+      <td>a4 - Bao trùm</td>
+      <td>30% K + 20% D + 10% AI + 40% H</td>
+      <td>5.445232</td>
+    </tr>
+    <tr>
+      <td>Thấp</td>
+      <td>Thấp</td>
+      <td>Trung bình</td>
+      <td>Thấp</td>
+      <td>3</td>
+      <td>a4</td>
+      <td>a4 - Bao trùm</td>
+      <td>30% K + 20% D + 10% AI + 40% H</td>
+      <td>3.554448</td>
+    </tr>
+    <tr>
+      <td>Thấp</td>
+      <td>Thấp</td>
+      <td>Trung bình</td>
+      <td>Trung bình</td>
+      <td>4</td>
+      <td>a4</td>
+      <td>a4 - Bao trùm</td>
+      <td>30% K + 20% D + 10% AI + 40% H</td>
+      <td>4.977893</td>
+    </tr>
+    <tr>
+      <td>Thấp</td>
+      <td>Thấp</td>
+      <td>Trung bình</td>
+      <td>Cao</td>
+      <td>5</td>
+      <td>a4</td>
+      <td>a4 - Bao trùm</td>
+      <td>30% K + 20% D + 10% AI + 40% H</td>
+      <td>5.347868</td>
+    </tr>
+    <tr>
+      <td>Thấp</td>
+      <td>Thấp</td>
+      <td>Cao</td>
+      <td>Thấp</td>
+      <td>6</td>
+      <td>a4</td>
+      <td>a4 - Bao trùm</td>
+      <td>30% K + 20% D + 10% AI + 40% H</td>
+      <td>2.490238</td>
+    </tr>
+    <tr>
+      <td>Thấp</td>
+      <td>Thấp</td>
+      <td>Cao</td>
+      <td>Trung bình</td>
+      <td>7</td>
+      <td>a2</td>
+      <td>a2 - Số hóa nhanh</td>
+      <td>25% K + 45% D + 15% AI + 15% H</td>
+      <td>3.832721</td>
+    </tr>
+    <tr>
+      <td>Thấp</td>
+      <td>Thấp</td>
+      <td>Cao</td>
+      <td>Cao</td>
+      <td>8</td>
+      <td>a4</td>
+      <td>a4 - Bao trùm</td>
+      <td>30% K + 20% D + 10% AI + 40% H</td>
+      <td>5.285453</td>
+    </tr>
+    <tr>
+      <td>Thấp</td>
+      <td>Trung bình</td>
+      <td>Thấp</td>
+      <td>Thấp</td>
+      <td>9</td>
+      <td>a4</td>
+      <td>a4 - Bao trùm</td>
+      <td>30% K + 20% D + 10% AI + 40% H</td>
+      <td>3.191186</td>
+    </tr>
+    <tr>
+      <td>Thấp</td>
+      <td>Trung bình</td>
+      <td>Thấp</td>
+      <td>Trung bình</td>
+      <td>10</td>
+      <td>a4</td>
+      <td>a4 - Bao trùm</td>
+      <td>30% K + 20% D + 10% AI + 40% H</td>
+      <td>4.371118</td>
+    </tr>
+    <tr>
+      <td>Thấp</td>
+      <td>Trung bình</td>
+      <td>Thấp</td>
+      <td>Cao</td>
+      <td>11</td>
+      <td>a4</td>
+      <td>a4 - Bao trùm</td>
+      <td>30% K + 20% D + 10% AI + 40% H</td>
+      <td>4.622591</td>
+    </tr>
+    <tr>
+      <td>Thấp</td>
+      <td>Trung bình</td>
+      <td>Trung bình</td>
+      <td>Thấp</td>
+      <td>12</td>
+      <td>a4</td>
+      <td>a4 - Bao trùm</td>
+      <td>30% K + 20% D + 10% AI + 40% H</td>
+      <td>2.188827</td>
+    </tr>
+    <tr>
+      <td>Thấp</td>
+      <td>Trung bình</td>
+      <td>Trung bình</td>
+      <td>Trung bình</td>
+      <td>13</td>
+      <td>a4</td>
+      <td>a4 - Bao trùm</td>
+      <td>30% K + 20% D + 10% AI + 40% H</td>
+      <td>3.477638</td>
+    </tr>
+    <tr>
+      <td>Thấp</td>
+      <td>Trung bình</td>
+      <td>Trung bình</td>
+      <td>Cao</td>
+      <td>14</td>
+      <td>a4</td>
+      <td>a4 - Bao trùm</td>
+      <td>30% K + 20% D + 10% AI + 40% H</td>
+      <td>3.988769</td>
+    </tr>
+    <tr>
+      <td>Thấp</td>
+      <td>Trung bình</td>
+      <td>Cao</td>
+      <td>Thấp</td>
+      <td>15</td>
+      <td>a4</td>
+      <td>a4 - Bao trùm</td>
+      <td>30% K + 20% D + 10% AI + 40% H</td>
+      <td>1.484779</td>
+    </tr>
+    <tr>
+      <td>Thấp</td>
+      <td>Trung bình</td>
+      <td>Cao</td>
+      <td>Trung bình</td>
+      <td>16</td>
+      <td>a4</td>
+      <td>a4 - Bao trùm</td>
+      <td>30% K + 20% D + 10% AI + 40% H</td>
+      <td>2.638813</td>
+    </tr>
+    <tr>
+      <td>Thấp</td>
+      <td>Trung bình</td>
+      <td>Cao</td>
+      <td>Cao</td>
+      <td>17</td>
+      <td>a4</td>
+      <td>a4 - Bao trùm</td>
+      <td>30% K + 20% D + 10% AI + 40% H</td>
+      <td>3.524499</td>
+    </tr>
+    <tr>
+      <td>Thấp</td>
+      <td>Cao</td>
+      <td>Thấp</td>
+      <td>Thấp</td>
+      <td>18</td>
+      <td>a4</td>
+      <td>a4 - Bao trùm</td>
+      <td>30% K + 20% D + 10% AI + 40% H</td>
+      <td>2.056756</td>
+    </tr>
+    <tr>
+      <td>Thấp</td>
+      <td>Cao</td>
+      <td>Thấp</td>
+      <td>Trung bình</td>
+      <td>19</td>
+      <td>a4</td>
+      <td>a4 - Bao trùm</td>
+      <td>30% K + 20% D + 10% AI + 40% H</td>
+      <td>3.274261</td>
+    </tr>
+    <tr>
+      <td>Thấp</td>
+      <td>Cao</td>
+      <td>Thấp</td>
+      <td>Cao</td>
+      <td>20</td>
+      <td>a4</td>
+      <td>a4 - Bao trùm</td>
+      <td>30% K + 20% D + 10% AI + 40% H</td>
+      <td>3.292976</td>
+    </tr>
+    <tr>
+      <td>Thấp</td>
+      <td>Cao</td>
+      <td>Trung bình</td>
+      <td>Thấp</td>
+      <td>21</td>
+      <td>a4</td>
+      <td>a4 - Bao trùm</td>
+      <td>30% K + 20% D + 10% AI + 40% H</td>
+      <td>0.875618</td>
+    </tr>
+    <tr>
+      <td>Thấp</td>
+      <td>Cao</td>
+      <td>Trung bình</td>
+      <td>Trung bình</td>
+      <td>22</td>
+      <td>a4</td>
+      <td>a4 - Bao trùm</td>
+      <td>30% K + 20% D + 10% AI + 40% H</td>
+      <td>2.449906</td>
+    </tr>
+    <tr>
+      <td>Thấp</td>
+      <td>Cao</td>
+      <td>Trung bình</td>
+      <td>Cao</td>
+      <td>23</td>
+      <td>a4</td>
+      <td>a4 - Bao trùm</td>
+      <td>30% K + 20% D + 10% AI + 40% H</td>
+      <td>2.207283</td>
+    </tr>
+    <tr>
+      <td>Thấp</td>
+      <td>Cao</td>
+      <td>Cao</td>
+      <td>Thấp</td>
+      <td>24</td>
+      <td>a4</td>
+      <td>a4 - Bao trùm</td>
+      <td>30% K + 20% D + 10% AI + 40% H</td>
+      <td>0.404640</td>
+    </tr>
+    <tr>
+      <td>Thấp</td>
+      <td>Cao</td>
+      <td>Cao</td>
+      <td>Trung bình</td>
+      <td>25</td>
+      <td>a4</td>
+      <td>a4 - Bao trùm</td>
+      <td>30% K + 20% D + 10% AI + 40% H</td>
+      <td>1.346350</td>
+    </tr>
+    <tr>
+      <td>Thấp</td>
+      <td>Cao</td>
+      <td>Cao</td>
+      <td>Cao</td>
+      <td>26</td>
+      <td>a4</td>
+      <td>a4 - Bao trùm</td>
+      <td>30% K + 20% D + 10% AI + 40% H</td>
+      <td>2.084745</td>
+    </tr>
+    <tr>
+      <td>Trung bình</td>
+      <td>Thấp</td>
+      <td>Thấp</td>
+      <td>Thấp</td>
+      <td>27</td>
+      <td>a4</td>
+      <td>a4 - Bao trùm</td>
+      <td>30% K + 20% D + 10% AI + 40% H</td>
+      <td>4.765680</td>
+    </tr>
+    <tr>
+      <td>Trung bình</td>
+      <td>Thấp</td>
+      <td>Thấp</td>
+      <td>Trung bình</td>
+      <td>28</td>
+      <td>a4</td>
+      <td>a4 - Bao trùm</td>
+      <td>30% K + 20% D + 10% AI + 40% H</td>
+      <td>5.775726</td>
+    </tr>
+    <tr>
+      <td>Trung bình</td>
+      <td>Thấp</td>
+      <td>Thấp</td>
+      <td>Cao</td>
+      <td>29</td>
+      <td>a3</td>
+      <td>a3 - AI dẫn dắt</td>
+      <td>20% K + 20% D + 45% AI + 15% H</td>
+      <td>4.320339</td>
+    </tr>
+    <tr>
+      <td>Trung bình</td>
+      <td>Thấp</td>
+      <td>Trung bình</td>
+      <td>Thấp</td>
+      <td>30</td>
+      <td>a4</td>
+      <td>a4 - Bao trùm</td>
+      <td>30% K + 20% D + 10% AI + 40% H</td>
+      <td>3.828202</td>
+    </tr>
+    <tr>
+      <td>Trung bình</td>
+      <td>Thấp</td>
+      <td>Trung bình</td>
+      <td>Trung bình</td>
+      <td>31</td>
+      <td>a4</td>
+      <td>a4 - Bao trùm</td>
+      <td>30% K + 20% D + 10% AI + 40% H</td>
+      <td>5.017939</td>
+    </tr>
+    <tr>
+      <td>Trung bình</td>
+      <td>Thấp</td>
+      <td>Trung bình</td>
+      <td>Cao</td>
+      <td>32</td>
+      <td>a4</td>
+      <td>a4 - Bao trùm</td>
+      <td>30% K + 20% D + 10% AI + 40% H</td>
+      <td>5.714648</td>
+    </tr>
+    <tr>
+      <td>Trung bình</td>
+      <td>Thấp</td>
+      <td>Cao</td>
+      <td>Thấp</td>
+      <td>33</td>
+      <td>a4</td>
+      <td>a4 - Bao trùm</td>
+      <td>30% K + 20% D + 10% AI + 40% H</td>
+      <td>3.528603</td>
+    </tr>
+    <tr>
+      <td>Trung bình</td>
+      <td>Thấp</td>
+      <td>Cao</td>
+      <td>Trung bình</td>
+      <td>34</td>
+      <td>a4</td>
+      <td>a4 - Bao trùm</td>
+      <td>30% K + 20% D + 10% AI + 40% H</td>
+      <td>4.515444</td>
+    </tr>
+    <tr>
+      <td>Trung bình</td>
+      <td>Thấp</td>
+      <td>Cao</td>
+      <td>Cao</td>
+      <td>35</td>
+      <td>a1</td>
+      <td>a1 - Cân bằng</td>
+      <td>40% K + 25% D + 15% AI + 20% H</td>
+      <td>4.333297</td>
+    </tr>
+    <tr>
+      <td>Trung bình</td>
+      <td>Trung bình</td>
+      <td>Thấp</td>
+      <td>Thấp</td>
+      <td>36</td>
+      <td>a4</td>
+      <td>a4 - Bao trùm</td>
+      <td>30% K + 20% D + 10% AI + 40% H</td>
+      <td>4.045052</td>
+    </tr>
+    <tr>
+      <td>Trung bình</td>
+      <td>Trung bình</td>
+      <td>Thấp</td>
+      <td>Trung bình</td>
+      <td>37</td>
+      <td>a4</td>
+      <td>a4 - Bao trùm</td>
+      <td>30% K + 20% D + 10% AI + 40% H</td>
+      <td>5.182748</td>
+    </tr>
+    <tr>
+      <td>Trung bình</td>
+      <td>Trung bình</td>
+      <td>Thấp</td>
+      <td>Cao</td>
+      <td>38</td>
+      <td>a4</td>
+      <td>a4 - Bao trùm</td>
+      <td>30% K + 20% D + 10% AI + 40% H</td>
+      <td>5.339338</td>
+    </tr>
+    <tr>
+      <td>Trung bình</td>
+      <td>Trung bình</td>
+      <td>Trung bình</td>
+      <td>Thấp</td>
+      <td>39</td>
+      <td>a4</td>
+      <td>a4 - Bao trùm</td>
+      <td>30% K + 20% D + 10% AI + 40% H</td>
+      <td>2.557191</td>
+    </tr>
+    <tr>
+      <td>Trung bình</td>
+      <td>Trung bình</td>
+      <td>Trung bình</td>
+      <td>Trung bình</td>
+      <td>40</td>
+      <td>a4</td>
+      <td>a4 - Bao trùm</td>
+      <td>30% K + 20% D + 10% AI + 40% H</td>
+      <td>4.008841</td>
+    </tr>
+    <tr>
+      <td>Trung bình</td>
+      <td>Trung bình</td>
+      <td>Trung bình</td>
+      <td>Cao</td>
+      <td>41</td>
+      <td>a4</td>
+      <td>a4 - Bao trùm</td>
+      <td>30% K + 20% D + 10% AI + 40% H</td>
+      <td>4.560787</td>
+    </tr>
+    <tr>
+      <td>Trung bình</td>
+      <td>Trung bình</td>
+      <td>Cao</td>
+      <td>Thấp</td>
+      <td>42</td>
+      <td>a4</td>
+      <td>a4 - Bao trùm</td>
+      <td>30% K + 20% D + 10% AI + 40% H</td>
+      <td>1.623190</td>
+    </tr>
+    <tr>
+      <td>Trung bình</td>
+      <td>Trung bình</td>
+      <td>Cao</td>
+      <td>Trung bình</td>
+      <td>43</td>
+      <td>a4</td>
+      <td>a4 - Bao trùm</td>
+      <td>30% K + 20% D + 10% AI + 40% H</td>
+      <td>3.437527</td>
+    </tr>
+    <tr>
+      <td>Trung bình</td>
+      <td>Trung bình</td>
+      <td>Cao</td>
+      <td>Cao</td>
+      <td>44</td>
+      <td>a4</td>
+      <td>a4 - Bao trùm</td>
+      <td>30% K + 20% D + 10% AI + 40% H</td>
+      <td>4.256855</td>
+    </tr>
+    <tr>
+      <td>Trung bình</td>
+      <td>Cao</td>
+      <td>Thấp</td>
+      <td>Thấp</td>
+      <td>45</td>
+      <td>a4</td>
+      <td>a4 - Bao trùm</td>
+      <td>30% K + 20% D + 10% AI + 40% H</td>
+      <td>2.542701</td>
+    </tr>
+    <tr>
+      <td>Trung bình</td>
+      <td>Cao</td>
+      <td>Thấp</td>
+      <td>Trung bình</td>
+      <td>46</td>
+      <td>a4</td>
+      <td>a4 - Bao trùm</td>
+      <td>30% K + 20% D + 10% AI + 40% H</td>
+      <td>3.861517</td>
+    </tr>
+    <tr>
+      <td>Trung bình</td>
+      <td>Cao</td>
+      <td>Thấp</td>
+      <td>Cao</td>
+      <td>47</td>
+      <td>a4</td>
+      <td>a4 - Bao trùm</td>
+      <td>30% K + 20% D + 10% AI + 40% H</td>
+      <td>3.849037</td>
+    </tr>
+    <tr>
+      <td>Trung bình</td>
+      <td>Cao</td>
+      <td>Trung bình</td>
+      <td>Thấp</td>
+      <td>48</td>
+      <td>a4</td>
+      <td>a4 - Bao trùm</td>
+      <td>30% K + 20% D + 10% AI + 40% H</td>
+      <td>1.369074</td>
+    </tr>
+    <tr>
+      <td>Trung bình</td>
+      <td>Cao</td>
+      <td>Trung bình</td>
+      <td>Trung bình</td>
+      <td>49</td>
+      <td>a4</td>
+      <td>a4 - Bao trùm</td>
+      <td>30% K + 20% D + 10% AI + 40% H</td>
+      <td>2.783901</td>
+    </tr>
+    <tr>
+      <td>Trung bình</td>
+      <td>Cao</td>
+      <td>Trung bình</td>
+      <td>Cao</td>
+      <td>50</td>
+      <td>a4</td>
+      <td>a4 - Bao trùm</td>
+      <td>30% K + 20% D + 10% AI + 40% H</td>
+      <td>2.726466</td>
+    </tr>
+    <tr>
+      <td>Trung bình</td>
+      <td>Cao</td>
+      <td>Cao</td>
+      <td>Thấp</td>
+      <td>51</td>
+      <td>a4</td>
+      <td>a4 - Bao trùm</td>
+      <td>30% K + 20% D + 10% AI + 40% H</td>
+      <td>0.680498</td>
+    </tr>
+    <tr>
+      <td>Trung bình</td>
+      <td>Cao</td>
+      <td>Cao</td>
+      <td>Trung bình</td>
+      <td>52</td>
+      <td>a4</td>
+      <td>a4 - Bao trùm</td>
+      <td>30% K + 20% D + 10% AI + 40% H</td>
+      <td>1.705485</td>
+    </tr>
+    <tr>
+      <td>Trung bình</td>
+      <td>Cao</td>
+      <td>Cao</td>
+      <td>Cao</td>
+      <td>53</td>
+      <td>a4</td>
+      <td>a4 - Bao trùm</td>
+      <td>30% K + 20% D + 10% AI + 40% H</td>
+      <td>2.469391</td>
+    </tr>
+    <tr>
+      <td>Cao</td>
+      <td>Thấp</td>
+      <td>Thấp</td>
+      <td>Thấp</td>
+      <td>54</td>
+      <td>a2</td>
+      <td>a2 - Số hóa nhanh</td>
+      <td>25% K + 45% D + 15% AI + 15% H</td>
+      <td>4.663294</td>
+    </tr>
+    <tr>
+      <td>Cao</td>
+      <td>Thấp</td>
+      <td>Thấp</td>
+      <td>Trung bình</td>
+      <td>55</td>
+      <td>a2</td>
+      <td>a2 - Số hóa nhanh</td>
+      <td>25% K + 45% D + 15% AI + 15% H</td>
+      <td>5.790562</td>
+    </tr>
+    <tr>
+      <td>Cao</td>
+      <td>Thấp</td>
+      <td>Thấp</td>
+      <td>Cao</td>
+      <td>56</td>
+      <td>a2</td>
+      <td>a2 - Số hóa nhanh</td>
+      <td>25% K + 45% D + 15% AI + 15% H</td>
+      <td>5.897137</td>
+    </tr>
+    <tr>
+      <td>Cao</td>
+      <td>Thấp</td>
+      <td>Trung bình</td>
+      <td>Thấp</td>
+      <td>57</td>
+      <td>a4</td>
+      <td>a4 - Bao trùm</td>
+      <td>30% K + 20% D + 10% AI + 40% H</td>
+      <td>4.698041</td>
+    </tr>
+    <tr>
+      <td>Cao</td>
+      <td>Thấp</td>
+      <td>Trung bình</td>
+      <td>Trung bình</td>
+      <td>58</td>
+      <td>a4</td>
+      <td>a4 - Bao trùm</td>
+      <td>30% K + 20% D + 10% AI + 40% H</td>
+      <td>5.745069</td>
+    </tr>
+    <tr>
+      <td>Cao</td>
+      <td>Thấp</td>
+      <td>Trung bình</td>
+      <td>Cao</td>
+      <td>59</td>
+      <td>a2</td>
+      <td>a2 - Số hóa nhanh</td>
+      <td>25% K + 45% D + 15% AI + 15% H</td>
+      <td>5.147611</td>
+    </tr>
+    <tr>
+      <td>Cao</td>
+      <td>Thấp</td>
+      <td>Cao</td>
+      <td>Thấp</td>
+      <td>60</td>
+      <td>a2</td>
+      <td>a2 - Số hóa nhanh</td>
+      <td>25% K + 45% D + 15% AI + 15% H</td>
+      <td>2.427648</td>
+    </tr>
+    <tr>
+      <td>Cao</td>
+      <td>Thấp</td>
+      <td>Cao</td>
+      <td>Trung bình</td>
+      <td>61</td>
+      <td>a2</td>
+      <td>a2 - Số hóa nhanh</td>
+      <td>25% K + 45% D + 15% AI + 15% H</td>
+      <td>3.891782</td>
+    </tr>
+    <tr>
+      <td>Cao</td>
+      <td>Thấp</td>
+      <td>Cao</td>
+      <td>Cao</td>
+      <td>62</td>
+      <td>a2</td>
+      <td>a2 - Số hóa nhanh</td>
+      <td>25% K + 45% D + 15% AI + 15% H</td>
+      <td>4.616933</td>
+    </tr>
+    <tr>
+      <td>Cao</td>
+      <td>Trung bình</td>
+      <td>Thấp</td>
+      <td>Thấp</td>
+      <td>63</td>
+      <td>a4</td>
+      <td>a4 - Bao trùm</td>
+      <td>30% K + 20% D + 10% AI + 40% H</td>
+      <td>3.927302</td>
+    </tr>
+    <tr>
+      <td>Cao</td>
+      <td>Trung bình</td>
+      <td>Thấp</td>
+      <td>Trung bình</td>
+      <td>64</td>
+      <td>a4</td>
+      <td>a4 - Bao trùm</td>
+      <td>30% K + 20% D + 10% AI + 40% H</td>
+      <td>5.160470</td>
+    </tr>
+    <tr>
+      <td>Cao</td>
+      <td>Trung bình</td>
+      <td>Thấp</td>
+      <td>Cao</td>
+      <td>65</td>
+      <td>a3</td>
+      <td>a3 - AI dẫn dắt</td>
+      <td>20% K + 20% D + 45% AI + 15% H</td>
+      <td>3.808463</td>
+    </tr>
+    <tr>
+      <td>Cao</td>
+      <td>Trung bình</td>
+      <td>Trung bình</td>
+      <td>Thấp</td>
+      <td>66</td>
+      <td>a2</td>
+      <td>a2 - Số hóa nhanh</td>
+      <td>25% K + 45% D + 15% AI + 15% H</td>
+      <td>2.400098</td>
+    </tr>
+    <tr>
+      <td>Cao</td>
+      <td>Trung bình</td>
+      <td>Trung bình</td>
+      <td>Trung bình</td>
+      <td>67</td>
+      <td>a4</td>
+      <td>a4 - Bao trùm</td>
+      <td>30% K + 20% D + 10% AI + 40% H</td>
+      <td>4.083417</td>
+    </tr>
+    <tr>
+      <td>Cao</td>
+      <td>Trung bình</td>
+      <td>Trung bình</td>
+      <td>Cao</td>
+      <td>68</td>
+      <td>a4</td>
+      <td>a4 - Bao trùm</td>
+      <td>30% K + 20% D + 10% AI + 40% H</td>
+      <td>4.547325</td>
+    </tr>
+    <tr>
+      <td>Cao</td>
+      <td>Trung bình</td>
+      <td>Cao</td>
+      <td>Thấp</td>
+      <td>69</td>
+      <td>a4</td>
+      <td>a4 - Bao trùm</td>
+      <td>30% K + 20% D + 10% AI + 40% H</td>
+      <td>1.854608</td>
+    </tr>
+    <tr>
+      <td>Cao</td>
+      <td>Trung bình</td>
+      <td>Cao</td>
+      <td>Trung bình</td>
+      <td>70</td>
+      <td>a4</td>
+      <td>a4 - Bao trùm</td>
+      <td>30% K + 20% D + 10% AI + 40% H</td>
+      <td>3.306191</td>
+    </tr>
+    <tr>
+      <td>Cao</td>
+      <td>Trung bình</td>
+      <td>Cao</td>
+      <td>Cao</td>
+      <td>71</td>
+      <td>a0</td>
+      <td>a0 - Truyền thống</td>
+      <td>70% K + 10% D + 10% AI + 10% H</td>
+      <td>2.928435</td>
+    </tr>
+    <tr>
+      <td>Cao</td>
+      <td>Cao</td>
+      <td>Thấp</td>
+      <td>Thấp</td>
+      <td>72</td>
+      <td>a4</td>
+      <td>a4 - Bao trùm</td>
+      <td>30% K + 20% D + 10% AI + 40% H</td>
+      <td>2.507570</td>
+    </tr>
+    <tr>
+      <td>Cao</td>
+      <td>Cao</td>
+      <td>Thấp</td>
+      <td>Trung bình</td>
+      <td>73</td>
+      <td>a4</td>
+      <td>a4 - Bao trùm</td>
+      <td>30% K + 20% D + 10% AI + 40% H</td>
+      <td>3.815151</td>
+    </tr>
+    <tr>
+      <td>Cao</td>
+      <td>Cao</td>
+      <td>Thấp</td>
+      <td>Cao</td>
+      <td>74</td>
+      <td>a4</td>
+      <td>a4 - Bao trùm</td>
+      <td>30% K + 20% D + 10% AI + 40% H</td>
+      <td>3.828237</td>
+    </tr>
+    <tr>
+      <td>Cao</td>
+      <td>Cao</td>
+      <td>Trung bình</td>
+      <td>Thấp</td>
+      <td>75</td>
+      <td>a4</td>
+      <td>a4 - Bao trùm</td>
+      <td>30% K + 20% D + 10% AI + 40% H</td>
+      <td>1.390558</td>
+    </tr>
+    <tr>
+      <td>Cao</td>
+      <td>Cao</td>
+      <td>Trung bình</td>
+      <td>Trung bình</td>
+      <td>76</td>
+      <td>a4</td>
+      <td>a4 - Bao trùm</td>
+      <td>30% K + 20% D + 10% AI + 40% H</td>
+      <td>2.734647</td>
+    </tr>
+    <tr>
+      <td>Cao</td>
+      <td>Cao</td>
+      <td>Trung bình</td>
+      <td>Cao</td>
+      <td>77</td>
+      <td>a4</td>
+      <td>a4 - Bao trùm</td>
+      <td>30% K + 20% D + 10% AI + 40% H</td>
+      <td>2.730265</td>
+    </tr>
+    <tr>
+      <td>Cao</td>
+      <td>Cao</td>
+      <td>Cao</td>
+      <td>Thấp</td>
+      <td>78</td>
+      <td>a4</td>
+      <td>a4 - Bao trùm</td>
+      <td>30% K + 20% D + 10% AI + 40% H</td>
+      <td>0.558538</td>
+    </tr>
+    <tr>
+      <td>Cao</td>
+      <td>Cao</td>
+      <td>Cao</td>
+      <td>Trung bình</td>
+      <td>79</td>
+      <td>a1</td>
+      <td>a1 - Cân bằng</td>
+      <td>40% K + 25% D + 15% AI + 20% H</td>
+      <td>0.840144</td>
+    </tr>
+    <tr>
+      <td>Cao</td>
+      <td>Cao</td>
+      <td>Cao</td>
+      <td>Cao</td>
+      <td>80</td>
+      <td>a4</td>
+      <td>a4 - Bao trùm</td>
+      <td>30% K + 20% D + 10% AI + 40% H</td>
+      <td>2.443432</td>
+    </tr>
+  </tbody>
+</table>
+        <h2>6. Câu hỏi thảo luận chính sách</h2>
+        
+    <h3>11.4.a. Khi GDP growth thấp, D thấp, U cao, chính sách π*(s) chọn gì? Có khớp với quick win không?</h3>
+    <p>
+    Ở trạng thái GDP thấp, mức số hóa thấp, AI thấp và rủi ro thất nghiệp cao, chính sách học được chọn
+    <b>a4 - Bao trùm</b>, tức <b>30% K + 20% D + 10% AI + 40% H</b>.
+    Nếu hành động nghiêng về số hóa nhanh hoặc bao trùm, có thể hiểu là mô hình ưu tiên quick win theo hướng cải thiện nền tảng số
+    và giảm rủi ro lao động. Nếu hành động nghiêng về cân bằng, mô hình đang tránh dồn quá mạnh vào AI khi nền tảng D và H còn yếu.
+    </p>
+
+    <h3>11.4.b. Khi GDP growth cao, AI cao, U thấp, chính sách chọn gì? Có phù hợp consolidation không?</h3>
+    <p>
+    Ở trạng thái GDP cao, số hóa cao, AI cao và thất nghiệp thấp, chính sách π*(s) chọn
+    <b>a4 - Bao trùm</b>, tức <b>30% K + 20% D + 10% AI + 40% H</b>.
+    Trạng thái này đã có nền tảng thuận lợi, nên nếu mô hình chọn cân bằng hoặc bao trùm thì phù hợp với logic consolidation:
+    củng cố thành quả, giảm rủi ro xã hội và tránh để tự động hóa làm tăng thất nghiệp. Nếu mô hình vẫn chọn AI dẫn dắt,
+    cần hiểu đó là chiến lược tiếp tục khai thác lợi thế công nghệ nhưng phải đi kèm kiểm soát CyberRisk và đào tạo lại.
+    </p>
+
+    <h3>11.4.c. Tích hợp π* vào quy trình hoạch định chính sách thế nào để không thay thế quyết định chính trị - xã hội?</h3>
+    <p>
+    Kết quả Q-learning nên được dùng như một công cụ hỗ trợ ra quyết định, không phải cơ chế tự động ban hành chính sách.
+    Quy trình hợp lý là: dùng mô hình để tạo kịch bản định lượng, công khai giả định và reward, kiểm tra độ nhạy,
+    sau đó trình kết quả cho hội đồng chính sách, chuyên gia ngành, địa phương và đại diện xã hội phản biện.
+    Trong kết quả hiện tại, chính sách có reward tốt nhất là <b>Q-learning π*</b>, nhưng lựa chọn cuối cùng vẫn cần cân nhắc
+    mục tiêu công bằng, an sinh, an ninh dữ liệu và trách nhiệm giải trình của cơ quan nhà nước.
+    </p>
+    
+    </body>
+    </html>
+    

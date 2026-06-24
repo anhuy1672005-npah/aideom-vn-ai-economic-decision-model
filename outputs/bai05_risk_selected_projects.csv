@@ -1,0 +1,9 @@
+﻿code,project_name,field,cost,benefit,completion_prob,expected_benefit,expected_npv_per_cost
+P2,Trung tâm dữ liệu quốc gia phía Nam,Hạ tầng,11500,20800,0.85,17680.0,1.537391304347826
+P3,Hệ thống 5G phủ sóng toàn quốc,Hạ tầng,18000,32500,0.85,27625.0,1.5347222222222223
+P5,Cổng dịch vụ công quốc gia v3,Chính phủ số,3200,6800,0.75,5100.0,1.59375
+P6,Y tế số quốc gia (hồ sơ sức khỏe),Y tế số,5800,11400,0.8,9120.0,1.5724137931034483
+P7,Giáo dục số K-12 toàn quốc,Giáo dục,6500,12200,0.8,9760.0,1.5015384615384615
+P12,Đào tạo 50.000 kỹ sư AI/bán dẫn,Nhân lực,8500,16200,0.8,12960.0,1.5247058823529411
+P14,An ninh mạng quốc gia (SOC),An ninh,3800,7500,0.8,6000.0,1.5789473684210527
+P15,Open Data + dữ liệu mở quốc gia,Dữ liệu,1500,3800,0.8,3040.0,2.026666666666667

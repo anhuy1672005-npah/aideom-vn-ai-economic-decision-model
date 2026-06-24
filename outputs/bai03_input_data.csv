@@ -1,0 +1,11 @@
+﻿sector_id,sector_name_vi,growth_rate_2024_pct,productivity_million_VND_per_worker,spillover_coef_0_1,export_billion_USD,labor_million,ai_readiness_0_100,automation_risk_pct
+1,Nông-Lâm-Thủy sản,3.27,103.4,0.35,40.5,13.2,15,18
+2,Công nghiệp chế biến chế tạo,9.64,241.2,0.78,290.9,11.5,55,42
+3,Xây dựng,7.45,168.8,0.42,2.5,4.8,20,25
+4,Khai khoáng,-1.2,1290.5,0.3,8.2,0.3,30,55
+5,Bán buôn-bán lẻ,7.1,145.3,0.55,5.5,7.8,48,38
+6,Tài chính-Ngân hàng-Bảo hiểm,7.36,1072.4,0.85,1.2,0.55,72,52
+7,Logistics-Vận tải-Kho bãi,9.93,321.4,0.72,3.1,1.95,42,35
+8,Thông tin-Truyền thông-CNTT,7.85,713.8,0.92,178.0,0.62,88,28
+9,Giáo dục-Đào tạo,6.42,205.7,0.65,0.0,2.15,38,22
+10,Y tế-Chăm sóc sức khỏe,6.85,437.1,0.6,0.0,0.75,45,18

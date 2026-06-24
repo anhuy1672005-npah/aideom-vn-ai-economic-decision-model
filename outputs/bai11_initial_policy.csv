@@ -1,0 +1,6 @@
+﻿Trường hợp,Trạng thái,Hành động π*(s) đầu tiên,Phân bổ,Reward 10 năm nếu đi theo π*,D cuối kỳ,AI cuối kỳ,H cuối kỳ,U cuối kỳ
+Việt Nam 2026 thực tế,GDP growth: Trung bình | Digital index: Trung bình | AI capacity: Thấp | Unemployment risk: Trung bình,a4 - Bao trùm,30% K + 20% D + 10% AI + 40% H,6.879485118766111,40.3,136.0,46.25504724850323,0.11125387664773329
+"GDP thấp, D thấp, AI thấp, U cao",GDP growth: Thấp | Digital index: Thấp | AI capacity: Thấp | Unemployment risk: Cao,a4 - Bao trùm,30% K + 20% D + 10% AI + 40% H,7.054391546058767,32.0,153.5,45.10161638046833,0.38592808991072297
+"GDP cao, D cao, AI cao, U thấp",GDP growth: Cao | Digital index: Cao | AI capacity: Cao | Unemployment risk: Thấp,a4 - Bao trùm,30% K + 20% D + 10% AI + 40% H,-0.24146889632962887,60.0,200.0,46.25504724850323,0.05
+"GDP trung bình, D thấp, AI thấp, U trung bình",GDP growth: Trung bình | Digital index: Thấp | AI capacity: Thấp | Unemployment risk: Trung bình,a4 - Bao trùm,30% K + 20% D + 10% AI + 40% H,8.631994018743276,32.0,136.0,46.25504724850323,0.08746606432197006
+"GDP trung bình, D trung bình, AI cao, U cao",GDP growth: Trung bình | Digital index: Trung bình | AI capacity: Cao | Unemployment risk: Cao,a4 - Bao trùm,30% K + 20% D + 10% AI + 40% H,5.461377462332744,40.3,200.0,46.25504724850323,0.3722234600918886

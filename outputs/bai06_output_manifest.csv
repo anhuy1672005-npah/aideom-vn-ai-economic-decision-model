@@ -1,0 +1,10 @@
+﻿File output,Ý nghĩa
+bai06_input_regions.csv,Dữ liệu 6 vùng dùng cho TOPSIS
+bai06_weights.csv,Trọng số chuyên gia và entropy
+bai06_topsis_expert.csv,Xếp hạng TOPSIS theo trọng số chuyên gia
+bai06_topsis_entropy.csv,Xếp hạng TOPSIS theo trọng số entropy
+bai06_compare_methods.csv,"So sánh TOPSIS chuyên gia, entropy và AHP"
+bai06_sensitivity_top3.csv,Độ nhạy top-3 khi w_AI thay đổi 0.10-0.40
+bai06_ahp_ranking.csv,Xếp hạng mở rộng AHP
+bai06_report.html,Báo cáo HTML
+bai06_heatmap_sensitivity.png,Heatmap độ nhạy rank theo w_AI

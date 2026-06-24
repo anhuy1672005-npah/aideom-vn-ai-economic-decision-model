@@ -1,0 +1,13 @@
+﻿Mô hình,Hạng mục,Tên hạng mục,x first-stage,Tỷ trọng trong 65.000 (%)
+SP - Stochastic,I,Hạ tầng số,0.0,0.0
+SP - Stochastic,D,Chuyển đổi số,0.0,0.0
+SP - Stochastic,AI,Trí tuệ nhân tạo,65000.0,100.0
+SP - Stochastic,H,Nhân lực số,0.0,0.0
+EV - Expected value,I,Hạ tầng số,0.0,0.0
+EV - Expected value,D,Chuyển đổi số,0.0,0.0
+EV - Expected value,AI,Trí tuệ nhân tạo,65000.0,100.0
+EV - Expected value,H,Nhân lực số,0.0,0.0
+Robust regret,I,Hạ tầng số,0.0,0.0
+Robust regret,D,Chuyển đổi số,0.0,0.0
+Robust regret,AI,Trí tuệ nhân tạo,28095.2380952381,43.22344322344323
+Robust regret,H,Nhân lực số,36904.7619047619,56.776556776556774

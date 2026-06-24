@@ -1,0 +1,6 @@
+﻿Kiểm tra,Giá trị,Ngưỡng,Đạt?
+Tổng ngân sách <= 50.000,50000.0,<= 50000,True
+Mỗi vùng >= 5.000,5000.0,>= 5000,True
+Mỗi vùng <= 12.000,12000.0,<= 12000,True
+Tổng nhân lực số H >= 12.000,12000.0,>= 12000,True
+"Công bằng vùng D_r + gamma*x_D,r >= lambda*M",0.68,>= 0.6800,True

@@ -1,0 +1,10 @@
+﻿File output,Ý nghĩa
+bai08_baseline_optimal.csv,Nghiệm tối ưu gốc SLSQP; có thể xuất hiện nghiệm góc
+bai08_policy_constrained.csv,Kịch bản mở rộng có sàn đầu tư D/AI/H
+bai08_policy_constrained_summary.csv,Tóm tắt kịch bản mở rộng tránh nghiệm góc
+bai08_report.html,Báo cáo HTML gồm cả nghiệm gốc và kịch bản mở rộng
+bai08_states.png,"Quỹ đạo trạng thái K, D, AI, H"
+bai08_y_c.png,Quỹ đạo Y và C
+bai08_investment.png,Cơ cấu đầu tư tối ưu
+bai08_shock.png,Điều chỉnh tiêu dùng khi cú sốc 2028
+bai08_strategies.png,So sánh welfare giữa các chiến lược

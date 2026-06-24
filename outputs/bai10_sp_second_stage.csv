@@ -1,0 +1,17 @@
+﻿Mô hình,Kịch bản,Tên kịch bản,Hạng mục,Tên hạng mục,y recourse,Tỷ trọng trong 15.000 (%),Tổng y theo kịch bản
+SP,s1,Lạc quan,I,Hạ tầng số,0.0,0.0,15000.0
+SP,s1,Lạc quan,D,Chuyển đổi số,15000.0,100.0,15000.0
+SP,s1,Lạc quan,AI,Trí tuệ nhân tạo,-0.0,-0.0,15000.0
+SP,s1,Lạc quan,H,Nhân lực số,0.0,0.0,15000.0
+SP,s2,Cơ sở,I,Hạ tầng số,0.0,0.0,15000.0
+SP,s2,Cơ sở,D,Chuyển đổi số,15000.0,100.0,15000.0
+SP,s2,Cơ sở,AI,Trí tuệ nhân tạo,-0.0,-0.0,15000.0
+SP,s2,Cơ sở,H,Nhân lực số,0.0,0.0,15000.0
+SP,s3,Bi quan,I,Hạ tầng số,0.0,0.0,15000.0
+SP,s3,Bi quan,D,Chuyển đổi số,0.0,0.0,15000.0
+SP,s3,Bi quan,AI,Trí tuệ nhân tạo,0.0,0.0,15000.0
+SP,s3,Bi quan,H,Nhân lực số,15000.0,100.0,15000.0
+SP,s4,Khủng hoảng,I,Hạ tầng số,0.0,0.0,15000.0
+SP,s4,Khủng hoảng,D,Chuyển đổi số,0.0,0.0,15000.0
+SP,s4,Khủng hoảng,AI,Trí tuệ nhân tạo,0.0,0.0,15000.0
+SP,s4,Khủng hoảng,H,Nhân lực số,15000.0,100.0,15000.0

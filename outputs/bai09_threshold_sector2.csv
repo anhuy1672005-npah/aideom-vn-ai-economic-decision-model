@@ -1,0 +1,4 @@
+﻿Cách hiểu,x_AI₂ giả định,x_H₂ tối thiểu,Công thức,Nhận xét
+"Chỉ yêu cầu NetJob₂ >= 0, đặt x_AI₂ = ngân sách tối đa",30000.0,0.0,"max(0, (c1*risk - a1)*x_AI / b1)","Với tham số đề, a1 - c1*risk > 0 nên NetJob₂ không âm ngay cả khi x_H₂ = 0."
+Yêu cầu đào tạo đủ: DisplacedJob₂ <= RetrainingCapacity₂,30000.0,24570.0,c1*risk*x_AI / d1,Đây là ngưỡng quan trọng hơn về an sinh: tự động hóa phải đi kèm năng lực đào tạo lại.
+Nếu x_AI₂ và x_H₂ cùng chia sẻ ngân sách 30.000 tỷ,16492.5783,13507.4217,x_AI <= B / (1 + c1*risk/d1),Không thể vừa đầu tư AI₂ = 30.000 vừa thêm đào tạo lại nếu tổng ngân sách vẫn chỉ là 30.000.

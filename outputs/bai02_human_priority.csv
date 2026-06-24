@@ -1,0 +1,12 @@
+﻿Chỉ tiêu,Giá trị,Đơn vị
+Z* cơ sở,112.25,nghìn tỷ VND GDP kỳ vọng
+Z* khi x3 >= 30,108.25,nghìn tỷ VND GDP kỳ vọng
+Mức thay đổi Z*,-4.0,nghìn tỷ VND GDP kỳ vọng
+x1 cơ sở,25.0,nghìn tỷ VND
+x2 cơ sở,15.0,nghìn tỷ VND
+x3 cơ sở,20.0,nghìn tỷ VND
+x4 cơ sở,40.0,nghìn tỷ VND
+x1 khi x3 >= 30,25.0,nghìn tỷ VND
+x2 khi x3 >= 30,15.0,nghìn tỷ VND
+x3 khi x3 >= 30,30.0,nghìn tỷ VND
+x4 khi x3 >= 30,30.0,nghìn tỷ VND

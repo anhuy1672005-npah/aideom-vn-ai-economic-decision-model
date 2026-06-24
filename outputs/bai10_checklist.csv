@@ -1,0 +1,8 @@
+﻿Yêu cầu,Trạng thái,Ghi chú
+"10.5.1 Cài đặt mô hình bằng Pyomo với Set, Param, Var; báo cáo first-stage tối ưu",Đã làm,Có Pyomo model; fallback scipy nếu máy thiếu GLPK/CBC.
+10.5.2 Giải deterministic từng kịch bản; so sánh EV và SP,Đã làm,"Có bảng deterministic s1-s4, EV, SP, robust."
+10.5.3 Tính VSS và EVPI; giải thích ý nghĩa,Đã làm,Có công thức VSS = SP - EEV và EVPI = WS - SP.
+10.5.4 Robust optimization cực tiểu hóa regret xấu nhất; so sánh với SP,Đã làm,Có bảng regret theo kịch bản và biểu đồ regret.
+"10.6 Trả lời câu hỏi thảo luận chính sách a, b, c",Đã làm,Diễn giải theo kết quả mô hình và bối cảnh Việt Nam.
+Trực quan hóa kết quả bằng biểu đồ,Đã làm,"Có biểu đồ first-stage, recourse, SP/EEV/WS, regret."
+Xuất kết quả Excel và HTML,Đã làm,Có nút tải Excel và HTML.

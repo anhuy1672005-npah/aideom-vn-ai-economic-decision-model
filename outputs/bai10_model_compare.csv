@@ -1,0 +1,6 @@
+﻿Mô hình,Mô tả,Giá trị đánh giá,Chỉ tiêu,Solver
+SP - Stochastic Programming,Tối ưu here-and-now x và recourse y_s theo xác suất kịch bản,98575.0,Expected objective,Pyomo/highs
+EV - Expected Value,Giải bài toán xác định bằng beta trung bình xác suất,96700.0,Objective trong mô hình trung bình,SciPy HiGHS
+EEV - Evaluate EV solution,Cố định x_EV rồi đánh giá lại dưới toàn bộ scenario tree,98575.0,Expected objective,SciPy HiGHS
+WS - Wait-and-see / Perfect Information,Biết trước từng kịch bản rồi mới quyết định,100687.5,Expected perfect-info objective,SciPy HiGHS
+Robust regret,Cực tiểu hóa regret kịch bản xấu nhất,15452.380952380947,Worst-case regret cần min,SciPy HiGHS

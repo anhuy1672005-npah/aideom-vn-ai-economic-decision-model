@@ -1,0 +1,10 @@
+﻿File output,Ý nghĩa
+bai07_pareto.csv,Tập nghiệm Pareto và điểm TOPSIS
+bai07_compromise_allocation.csv,Phân bổ nghiệm thỏa hiệp TOPSIS
+bai07_max_growth_allocation.csv,Phân bổ nghiệm tăng trưởng cao nhất
+bai07_opportunity_cost.csv,Chi phí cơ hội giữa nghiệm tăng trưởng và nghiệm thỏa hiệp
+bai07_feasibility_diagnostic.csv,Chẩn đoán lambda 0.70 không khả thi
+bai07_scatter_3d.png,Scatter 3D Pareto
+bai07_parallel.png,Parallel coordinates 4 mục tiêu
+bai07_heatmap.png,Heatmap phân bổ nghiệm thỏa hiệp
+bai07_report.html,Báo cáo HTML

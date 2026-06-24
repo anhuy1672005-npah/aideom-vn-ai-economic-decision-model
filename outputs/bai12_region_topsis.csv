@@ -1,0 +1,7 @@
+﻿region_id,region_name_vi,region_name_en,population_million,grdp_trillion_VND,grdp_growth_pct,grdp_per_capita_million_VND,fdi_registered_billion_USD,exports_billion_USD,digital_index_0_100,ai_readiness_0_100,trained_labor_pct,gini_coef,rd_intensity_pct,internet_penetration_pct,TOPSIS_score,TOPSIS_rank
+5,Đông Nam Bộ,Southeast,19.2,3050,7.5,158.9,18.5,128.5,82,75,42.5,0.385,0.78,94,0.9401516970281262,1
+2,Đồng bằng sông Hồng,Red River Delta,23.5,3580,7.9,152.3,20.0,132.0,78,68,36.8,0.358,0.85,92,0.8981332243412681,2
+3,Bắc Trung Bộ và duyên hải miền Trung,North Central and South Central Coast,20.8,1820,6.85,87.5,8.2,68.5,55,40,27.5,0.372,0.32,84,0.3597195549299644,3
+6,Đồng bằng sông Cửu Long,Mekong Delta,17.5,1409,7.3,80.5,2.1,25.7,48,30,16.8,0.392,0.22,78,0.17103796130727242,4
+1,Trung du miền núi phía Bắc,Northern Midlands and Mountains,14.2,810,8.5,57.0,3.5,42.5,38,22,21.5,0.405,0.18,72,0.09928628933123618,5
+4,Tây Nguyên,Central Highlands,6.1,420,7.2,68.9,0.8,2.8,32,18,18.2,0.412,0.15,68,0.031216208412572943,6

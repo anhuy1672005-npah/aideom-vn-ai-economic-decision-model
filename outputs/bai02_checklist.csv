@@ -1,0 +1,12 @@
+﻿Yêu cầu,Trạng thái,Ghi chú
+2.4.1 Giải bằng scipy.optimize.linprog,Đã làm,Sử dụng linprog(method='highs')
+2.4.1 Báo cáo giá trị tối ưu và phân bổ tối ưu,Đã làm,Z* = 112.2500
+2.4.2 Giải lại bằng PuLP,Đã làm,PuLP/CBC có thể trả .pi cho LP liên tục
+2.4.2 In dual values / shadow price,Đã làm,Hiển thị trong bảng dual_df
+2.4.2 Giải thích shadow price ngân sách tổng,Đã làm,Shadow price ngân sách tổng xấp xỉ 1.35
+"2.4.3 Phân tích B = 100, 120, 140",Đã làm,Có bảng sensitivity_df
+2.4.3 Vẽ đường cong Z*(B),Đã làm,Có biểu đồ matplotlib
+2.4.4 Kiểm tra x3 >= 30 có khả thi không,Đã làm,Kịch bản x3 >= 30 vẫn khả thi
+2.4.4 So sánh Z* thay đổi như thế nào,Đã làm,Z* thay đổi -4.0000
+"2.5 Trả lời câu hỏi chính sách a, b, c",Đã làm,Đã viết theo văn phong chính sách
+Xuất file kết quả phục vụ nộp bài,Đã làm,"Có CSV, Excel và HTML report"

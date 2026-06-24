@@ -1,0 +1,7 @@
+﻿Ràng buộc,Vế trái,Dấu,Vế phải,Slack trực tiếp,Kết luận
+Ngân sách tổng,100.0,<=,100.0,0.0,Đạt
+Sàn hạ tầng số,25.0,>=,25.0,0.0,Đạt
+Sàn AI và dữ liệu,15.0,>=,15.0,0.0,Đạt
+Sàn nhân lực số,20.0,>=,20.0,0.0,Đạt
+Sàn R&D công nghệ,40.0,>=,10.0,30.0,Đạt
+Tỷ trọng công nghệ chiến lược,55.0,>=,35.0,20.0,Đạt

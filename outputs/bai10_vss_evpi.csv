@@ -1,0 +1,6 @@
+﻿Chỉ số,Giá trị,Diễn giải
+SP,98575.0,Giá trị tối ưu khi xét bất định ngay từ đầu.
+EEV,98575.0,Giá trị của nghiệm EV khi đem đánh giá lại dưới các kịch bản thật.
+WS,100687.5,Giá trị kỳ vọng nếu có thông tin hoàn hảo về kịch bản tương lai.
+VSS = SP - EEV,0.0,Lợi ích của việc dùng mô hình ngẫu nhiên thay vì chỉ dùng kịch bản trung bình.
+EVPI = WS - SP,2112.5,Giá trị tối đa có thể trả cho thông tin hoàn hảo về tương lai.

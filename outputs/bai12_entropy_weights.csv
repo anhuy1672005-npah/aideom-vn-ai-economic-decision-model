@@ -1,0 +1,9 @@
+﻿criterion,entropy_weight
+grdp_per_capita_million_VND,0.05795473457567964
+fdi_registered_billion_USD,0.3054872020143935
+digital_index_0_100,0.04396439392997917
+ai_readiness_0_100,0.10233173710536457
+trained_labor_pct,0.04620520180929003
+rd_intensity_pct,0.17372471041187731
+internet_penetration_pct,0.005407088247399166
+gini_coef,0.2649249319046412

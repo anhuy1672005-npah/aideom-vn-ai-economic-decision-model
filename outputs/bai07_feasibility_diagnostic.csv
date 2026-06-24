@@ -1,0 +1,4 @@
+﻿Nội dung,Giá trị,Diễn giải
+Lambda gốc trong đề,0.7,Bài 7 kế thừa C5 từ Bài 4
+Lambda tối đa khả thi sơ bộ,0.6829268292682927,Do Tây Nguyên bị trần 12.000 tỷ/vùng nên chỉ đạt tối đa 32 + 0.002*12.000 = 56 điểm
+Lambda dùng để chạy mặc định,0.68,"Bản hiệu chỉnh khả thi để tạo tập Pareto, không che giấu mô hình gốc không khả thi"
