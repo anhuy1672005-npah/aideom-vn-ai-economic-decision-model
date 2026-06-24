@@ -1,0 +1,13 @@
+streamlit
+pandas
+numpy
+scipy
+pulp
+cvxpy
+pymoo
+pyomo
+plotly
+matplotlib
+openpyxl
+gymnasium
+stable-baselines3

@@ -1,0 +1,11 @@
+sector_id,sector_name_vi,sector_name_en,gdp_share_2024_pct,growth_rate_2024_pct,labor_million,labor_share_pct,export_billion_USD,digital_index_0_100,ai_readiness_0_100,fdi_attraction_billion_USD,spillover_coef_0_1,automation_risk_pct,rd_intensity_pct
+1,Nông-Lâm-Thủy sản,Agriculture-Forestry-Fishery,11.86,3.27,13.20,26.5,40.5,28,15,2.1,0.35,18,0.15
+2,Công nghiệp chế biến chế tạo,Manufacturing,24.10,9.64,11.50,23.1,290.9,68,55,18.6,0.78,42,0.62
+3,Xây dựng,Construction,7.04,7.45,4.80,9.6,2.5,35,20,0.8,0.42,25,0.18
+4,Khai khoáng,Mining,3.36,-1.20,0.30,0.6,8.2,50,30,0.5,0.30,55,0.22
+5,Bán buôn-bán lẻ,Wholesale-Retail,9.85,7.10,7.80,15.7,5.5,72,48,3.2,0.55,38,0.10
+6,Tài chính-Ngân hàng-Bảo hiểm,Finance-Banking-Insurance,5.12,7.36,0.55,1.1,1.2,82,72,1.8,0.85,52,0.45
+7,Logistics-Vận tải-Kho bãi,Logistics-Transport-Warehousing,5.45,9.93,1.95,3.9,3.1,65,42,2.4,0.72,35,0.20
+8,Thông tin-Truyền thông-CNTT,Information-Communication-IT,3.85,7.85,0.62,1.2,178.0,92,88,4.6,0.92,28,1.20
+9,Giáo dục-Đào tạo,Education-Training,3.85,6.42,2.15,4.3,0.0,55,38,0.4,0.65,22,0.30
+10,Y tế-Chăm sóc sức khỏe,Healthcare,2.85,6.85,0.75,1.5,0.0,58,45,1.2,0.60,18,0.55
